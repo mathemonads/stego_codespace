@@ -7,7 +7,17 @@ class Steganography:
         raise NotImplementedError("Subclasses should implement method: decode")
 
 class Stego1(Steganography):
-    def encode(self, message, bits):
+    def encode(self, message: str, bits: str = "") -> str: 
+        """Method to encode a message into the cover text using the rule: 
+        if value is a 0, we do not change the white space, if value is a 1, add a space to the whitespace.
+
+        Args:
+            message (str): Value to hide the information into 
+            bits (str, optional): String of bits to hide into the message. Defaults to "", or no message.
+
+        Returns:
+            str: Message with encode bits.  
+        """
         i = 0
         stego = []
         for char in message:
@@ -20,7 +30,15 @@ class Stego1(Steganography):
             stego.append(" ")
         return "".join(stego)
 
-    def decode(self, message):
+    def decode(self, message: str) -> str: 
+        """Method to decode the hidden message from the stego text.
+
+        Args:
+            message (str): Message with hidden information 
+
+        Returns:
+            str: Hidden message as a string of 0s and 1s. 
+        """
         bits = []
         c = 0
         for char in message:
@@ -39,7 +57,17 @@ class Stego1(Steganography):
         return "".join(bits)
 
 class Stego2(Steganography):
-    def encode(self, message, bits):
+    def encode(self, message: str, bits: str = "") -> str:
+        """Method to encode a message into the cover text using the rule: 
+        if value is a 0, the value is lowercases, if value is a 1, it is capitalized.
+
+        Args:
+            message (str): Value to hide the information into 
+            bits (str, optional): String of bits to hide into the message. Defaults to "", or no message.
+
+        Returns:
+            str: Message with encode bits.  
+        """
         i = 0
         stego = []
         for char in message:
@@ -53,7 +81,15 @@ class Stego2(Steganography):
                 stego.append(char)
         return "".join(stego)
 
-    def decode(self, message):
+    def decode(self, message: str) -> str:
+        """Method to decode the hidden message from the stego text.
+
+        Args:
+            message (str): Message with hidden information 
+
+        Returns:
+            str: Hidden message as a string of 0s and 1s. 
+        """
         bits = []
         for char in message:
             if char.isalpha():
