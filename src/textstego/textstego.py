@@ -1,4 +1,5 @@
-"""Main module."""
+
+""" Main module. """
 
 class Steganography:
     def encode(self, message, bits):
@@ -7,16 +8,18 @@ class Steganography:
         raise NotImplementedError("Subclasses should implement method: decode")
 
 class Stego1(Steganography):
+    # if value is a 0, we do not change the white space, if value is a 1, add a space to the whitespace.
     def encode(self, message: str, bits: str = "") -> str: 
-        """Method to encode a message into the cover text using the rule: 
-        if value is a 0, we do not change the white space, if value is a 1, add a space to the whitespace.
+
+        """Method to encode a message into the cover text using a rule described in the program.
+        Students: Can you figure out how this method works?
 
         Args:
             message (str): Value to hide the information into 
             bits (str, optional): String of bits to hide into the message. Defaults to "", or no message.
 
         Returns:
-            str: Message with encode bits.  
+            str: Stego message embedded with hidden bits.  
         """
         i = 0
         stego = []
@@ -57,16 +60,17 @@ class Stego1(Steganography):
         return "".join(bits)
 
 class Stego2(Steganography):
+    # if value is a 0, the value is lowercases, if value is a 1, it is capitalized.
     def encode(self, message: str, bits: str = "") -> str:
-        """Method to encode a message into the cover text using the rule: 
-        if value is a 0, the value is lowercases, if value is a 1, it is capitalized.
+        """Method to encode a message into the cover text using a rule described in the program.
+        Students: Can you figure out how this method works?
 
         Args:
             message (str): Value to hide the information into 
             bits (str, optional): String of bits to hide into the message. Defaults to "", or no message.
 
         Returns:
-            str: Message with encode bits.  
+            str: Stego message embedded with hidden bits.  
         """
         i = 0
         stego = []
